@@ -5,7 +5,19 @@ const menuLoaded = (newMenu) => {
 		payload: newMenu
 	}
 }
+const menuRequest = () => {
+	return {
+		type: 'MENU_REQUEST',
+	}
+}
+const menuError = () => {
+	return {
+		type: 'MENU_ERROR',
+	}
+}
 
 export {
-	menuLoaded
+	menuRequest,
+	menuLoaded,
+	menuError
 }; 
