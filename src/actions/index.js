@@ -15,9 +15,23 @@ const menuError = () => {
 		type: 'MENU_ERROR',
 	}
 }
+const addToCart = (id) => {
+	return {
+		type: 'ITEM_ADD_TO_CART',
+		payload: id
+	}
+}
+const deleteFromCart = (id) => {
+	return {
+		type: 'ITEM_REMOVE_FROM_CART',
+		payload: id
+	}
+}
 
 export {
 	menuRequest,
 	menuLoaded,
-	menuError
+	menuError,
+	addToCart,
+	deleteFromCart
 }; 
