@@ -27,11 +27,36 @@ const deleteFromCart = (id) => {
 		payload: id
 	}
 }
+const incItemInCart = (id) => {
+	return {
+		type: 'ITEM_INCREASE_IN_CART',
+		payload: id
+	}
+}
+const decItemInCart = (id) => {
+	return {
+		type: 'ITEM_DECREASE_IN_CART',
+		payload: id
+	}
+}
+
+const inputItemInCart = (id, value) => {
+	const item = {};
+	item.id = id;
+	item.value = value
+	return {
+		type: 'ITEM_INPUT_IN_CART',
+		payload: item
+	}
+}
 
 export {
 	menuRequest,
 	menuLoaded,
 	menuError,
 	addToCart,
-	deleteFromCart
+	deleteFromCart,
+	incItemInCart,
+	decItemInCart,
+	inputItemInCart
 }; 
