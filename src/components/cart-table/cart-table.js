@@ -9,12 +9,14 @@ const CartTable = ({items, deleteFromCart, incItemInCart, decItemInCart, inputIt
 				<div className="cart__title">Ваша корзина пустая</div>
 			)
 		}
-		const validateValue = (id, value) => {
-			if(value === 0 || value === '') {
+		const validateValue = (id, value, prevValue) => {
+			if(+value === 0 || value === '') {
 				value = 1;
 				inputItemInCart(id, value)
+			} else if(isNaN(value)){
+				inputItemInCart(id, prevValue)
 			} else {
-				inputItemInCart(id, value)
+				inputItemInCart(id, +value)
 			}
 		}
     return (
@@ -30,7 +32,7 @@ const CartTable = ({items, deleteFromCart, incItemInCart, decItemInCart, inputIt
 											<div className="cart__item-title">{title}</div>
 											<div className="cart__item-quantity">
 												<button onClick={() => decItemInCart(id)} className="cart__item-quantity-btn">-</button>
-												<input onChange={(e) => validateValue(id, e.target.value)} type="tel" value={number}/>
+												<input onChange={(e) => validateValue(id, e.target.value, number)} type="tel" value={number}/>
 												<button onClick={() => incItemInCart(id)} className="cart__item-quantity-btn">+</button>
 											</div>
 

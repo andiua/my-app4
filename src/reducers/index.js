@@ -74,14 +74,9 @@ const reducer = (state = initialState, action) => {
 			const item = state.items.find( item => item.id === id);
 			item.number += 1;
 			item.total = item.number * item.price;
-			let newTotal;
-			if (state.items.length > 1) {
-				newTotal = state.items.reduce((preItem, curItem) => {
-					return preItem.total + curItem.total
-				})
-			} else {
-				newTotal = item.total;
-			}
+			const	newTotal = state.items.reduce((preItem, curItem) => {
+				return preItem + curItem.total
+			}, 0)
 			return {
 				...state,
 				total: newTotal,
@@ -95,14 +90,9 @@ const reducer = (state = initialState, action) => {
 			const item = state.items.find( item => item.id === id);
 			item.number === 1 ? item.number = 1 : item.number -= 1;
 			item.total = item.number * item.price;
-			let newTotal;
-			if (state.items.length > 1) {
-				newTotal = state.items.reduce((preItem, curItem) => {
-					return preItem.total + curItem.total
-				})
-			} else {
-				newTotal = item.total;
-			}
+			const	newTotal = state.items.reduce((preItem, curItem) => {
+				return preItem + curItem.total
+			}, 0)
 			return {
 				...state,
 				total: newTotal,
@@ -113,20 +103,14 @@ const reducer = (state = initialState, action) => {
 		}
 
 		case 'ITEM_INPUT_IN_CART': {
-			console.log(action.payload);
 			const id = action.payload.id;
-			const value = +action.payload.value;
+			const value = action.payload.value;
 			const item = state.items.find( item => item.id === id);
 			item.number = value;
 			item.total = value * item.price
-			let newTotal;
-			if (state.items.length > 1) {
-				newTotal = state.items.reduce((preItem, curItem) => {
-					return preItem.total + curItem.total
-				})
-			} else {
-				newTotal = item.total;
-			}
+			const	newTotal = state.items.reduce((preItem, curItem) => {
+				return preItem + curItem.total
+			}, 0)
 			return {
 				...state,
 				total: newTotal,
